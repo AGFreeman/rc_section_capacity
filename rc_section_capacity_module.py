@@ -1,4 +1,5 @@
 import numpy as np
+from eng_module import utils as ut
 from sectionproperties.pre.library import concrete_rectangular_section
 import matplotlib.axes
 from typing import Tuple
@@ -9,6 +10,165 @@ from concreteproperties import (
     ConcreteSection,
     SteelBar,
 )
+
+
+def convert_to_numeric(data: list[list[str]]) -> list[list[float]]:
+    """
+    Converts items in a list into floats
+    """
+    outside_acc = []
+    for outside_item in data:
+        inside_acc = []
+        for inside_item in outside_item:
+            inside_acc.append(ut.str_to_float(inside_item))
+        outside_acc.append(inside_acc)
+    return outside_acc
+
+def define_concrete_material(
+        conc_class: str = 'B30',
+        conc_density: float = 2.4e-6,
+        conc_diag_type: str = 'Двухлинейная',
+        load_type: str = 'Кратковременная',
+        humidity: str = '<40',
+) -> Tuple[Concrete, matplotlib.axes.Axes, matplotlib.axes.Axes]:
+        """
+        """
+
+        conc_mat_data = convert_to_numeric(ut.read_csv_file("concrete.csv"))
+        for line in conc_mat_data:
+            if conc_class == line[0]:
+                Rbn = line[1]
+                Rbtn = line[2]
+                Rb = line[3]
+                Rbt = line[4]
+                Eb = line[5]
+                eps_b0_st = line[6]
+                eps_b0_lt_to40 = line[7]
+                eps_b0_lt_40to75 = line[8]
+                eps_b0_lt_75up = line[9]
+                eps_b2_lt_to40 = line[10]
+                eps_b2_lt_40to75 = line[11]
+                eps_b2_lt_75up = line[12]
+                eps_b1red_lt_to40 = line[13]
+                eps_b1red_lt_40to75 = line[14]
+                eps_b1red_lt_75up = line[15]
+                eps_bt0_st = line[16]
+                eps_bt0_lt_to40 = line[17]
+                eps_bt0_lt_40to75 = line[18]
+                eps_bt0_lt_75up = line[19]
+                eps_bt2_lt_to40 = line[20]
+                eps_bt2_lt_40to75 = line[21]
+                eps_bt2_lt_75up = line[22]
+                eps_bt1red_lt_to40 = line[23]
+                eps_bt1red_lt_40to75 = line[24]
+                eps_bt1red_lt_75up = line[25]
+                eps_b2_st = line[26]
+                eps_b1red_st = line[27]
+                eps_bt2_st = line[28]
+                eps_bt1red_st = line[29]
+
+        conc_service_strain_trilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
+        conc_service_strain_trilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
+        conc_service_strain_trilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
+        conc_service_strain_trilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-eps_bt0_st,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_st,eps_b2_st]
+
+        conc_service_strain_bilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
+        conc_service_strain_bilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
+        conc_service_strain_bilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
+        conc_service_strain_bilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-Rbtn/Eb,0,eps_b1red_st,eps_b2_st]
+
+        conc_ultimate_strain_trilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
+        conc_ultimate_strain_trilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
+        conc_ultimate_strain_trilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
+        conc_ultimate_strain_trilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt0_st,-eps_bt2_st,-eps_bt0_st,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_st,eps_b2_st]
+
+        conc_ultimate_strain_bilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
+        conc_ultimate_strain_bilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
+        conc_ultimate_strain_bilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
+        conc_ultimate_strain_bilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-Rbt/Eb,0,eps_b1red_st,eps_b2_st]
+
+        conc_service_stress_trilin_curve_lt_to40 = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        conc_service_stress_trilin_curve_lt_40to75 = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        conc_service_stress_trilin_curve_lt_75up = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        conc_service_stress_trilin_curve_st = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+
+        conc_service_stress_bilin_curve_lt_to40 = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        conc_service_stress_bilin_curve_lt_40to75 = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        conc_service_stress_bilin_curve_lt_75up = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        conc_service_stress_bilin_curve_st = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+
+        conc_ultimate_stress_trilin_curve_lt_to40 = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        conc_ultimate_stress_trilin_curve_lt_40to75 = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        conc_ultimate_stress_trilin_curve_lt_75up = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        conc_ultimate_stress_trilin_curve_st = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+
+        conc_ultimate_stress_bilin_curve_lt_to40 = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        conc_ultimate_stress_bilin_curve_lt_40to75 = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        conc_ultimate_stress_bilin_curve_lt_75up = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        conc_ultimate_stress_bilin_curve_st = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+
+        if conc_diag_type == "Двухлинейная":
+            if load_type == "Кратковременная":
+                conc_service_strain = conc_service_strain_bilin_curve_st
+                conc_service_stress = conc_service_stress_bilin_curve_st
+                conc_ultimate_strain = conc_ultimate_strain_bilin_curve_st
+                conc_ultimate_stress = conc_ultimate_stress_bilin_curve_st
+            elif load_type == "Длительная":
+                if humidity == "<40":
+                    conc_service_strain = conc_service_strain_bilin_curve_lt_to40
+                    conc_service_stress = conc_service_stress_bilin_curve_lt_to40
+                    conc_ultimate_strain = conc_ultimate_strain_bilin_curve_lt_to40
+                    conc_ultimate_stress = conc_ultimate_stress_bilin_curve_lt_to40
+                elif humidity == "40-75":
+                    conc_service_strain = conc_service_strain_bilin_curve_lt_40to75
+                    conc_service_stress = conc_service_stress_bilin_curve_lt_40to75
+                    conc_ultimate_strain = conc_ultimate_strain_bilin_curve_lt_40to75
+                    conc_ultimate_stress = conc_ultimate_stress_bilin_curve_lt_40to75
+                elif humidity == ">75":
+                    conc_service_strain = conc_service_strain_bilin_curve_lt_75up
+                    conc_service_stress = conc_service_stress_bilin_curve_lt_75up
+                    conc_ultimate_strain = conc_ultimate_strain_bilin_curve_lt_75up
+                    conc_ultimate_stress = conc_ultimate_stress_bilin_curve_lt_75up
+        elif conc_diag_type == "Трехлинейная":
+            if load_type == "Кратковременная":
+                conc_service_strain = conc_service_strain_trilin_curve_st
+                conc_service_stress = conc_service_stress_trilin_curve_st
+                conc_ultimate_strain = conc_ultimate_strain_trilin_curve_st
+                conc_ultimate_stress = conc_ultimate_stress_trilin_curve_st
+            elif load_type == "Длительная":
+                if humidity == "<40":
+                    conc_service_strain = conc_service_strain_trilin_curve_lt_to40
+                    conc_service_stress = conc_service_stress_trilin_curve_lt_to40
+                    conc_ultimate_strain = conc_ultimate_strain_trilin_curve_lt_to40
+                    conc_ultimate_stress = conc_ultimate_stress_trilin_curve_lt_to40
+                elif humidity == "40-75":
+                    conc_service_strain = conc_service_strain_trilin_curve_lt_40to75
+                    conc_service_stress = conc_service_stress_trilin_curve_lt_40to75
+                    conc_ultimate_strain = conc_ultimate_strain_trilin_curve_lt_40to75
+                    conc_ultimate_stress = conc_ultimate_stress_trilin_curve_lt_40to75
+                elif humidity == ">75":
+                    conc_service_strain = conc_service_strain_trilin_curve_lt_75up
+                    conc_service_stress = conc_service_stress_trilin_curve_lt_75up
+                    conc_ultimate_strain = conc_ultimate_strain_trilin_curve_lt_75up
+                    conc_ultimate_stress = conc_ultimate_stress_trilin_curve_lt_75up
+                     
+                
+        concrete_material = Concrete(
+            name=conc_class,
+            density=conc_density,
+            stress_strain_profile=ssp.StressStrainProfile(conc_service_strain,conc_service_stress),
+            ultimate_stress_strain_profile=ssp.StressStrainProfile(conc_ultimate_strain, conc_ultimate_stress),
+            flexural_tensile_strength=Rbt,
+            colour="lightgrey",
+        )
+
+        ssp_service = concrete_material.stress_strain_profile
+        ssp_ultimate = concrete_material.ultimate_stress_strain_profile
+
+        return concrete_material, ssp_service, ssp_ultimate
+        
+    
+    
 
 def concrete_section_analysis(
         height: float,
