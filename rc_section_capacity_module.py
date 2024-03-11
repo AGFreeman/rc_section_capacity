@@ -19,8 +19,7 @@ def concrete_section_analysis(
         bottom_rebar_number: float,
         bottom_rebar_size: float,
         bottom_clear_cover: float,
-        axial_force: float,
-        moment: float) -> Tuple[ConcreteSection, matplotlib.axes.Axes, matplotlib.axes.Axes]:
+        ) -> Tuple[ConcreteSection, matplotlib.axes.Axes, matplotlib.axes.Axes]:
     
     """
     """
