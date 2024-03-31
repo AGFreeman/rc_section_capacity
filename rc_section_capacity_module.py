@@ -67,45 +67,90 @@ def define_concrete_material(
                 eps_bt2_st = line[28]
                 eps_bt1red_st = line[29]
 
-        conc_service_strain_trilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
-        conc_service_strain_trilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
-        conc_service_strain_trilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
-        conc_service_strain_trilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-eps_bt0_st,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_st,eps_b2_st]
+        # conc_service_strain_trilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
+        # conc_service_strain_trilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
+        # conc_service_strain_trilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
+        # conc_service_strain_trilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-eps_bt0_st,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_st,eps_b2_st]
 
-        conc_service_strain_bilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
-        conc_service_strain_bilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
-        conc_service_strain_bilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
-        conc_service_strain_bilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-Rbtn/Eb,0,eps_b1red_st,eps_b2_st]
+        # conc_service_strain_bilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
+        # conc_service_strain_bilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
+        # conc_service_strain_bilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
+        # conc_service_strain_bilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-eps_bt1red_st,0,eps_b1red_st,eps_b2_st]
 
-        conc_ultimate_strain_trilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
-        conc_ultimate_strain_trilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
-        conc_ultimate_strain_trilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
-        conc_ultimate_strain_trilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt0_st,-eps_bt2_st,-eps_bt0_st,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_st,eps_b2_st]
+        # conc_ultimate_strain_trilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
+        # conc_ultimate_strain_trilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
+        # conc_ultimate_strain_trilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
+        # conc_ultimate_strain_trilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt0_st,-eps_bt2_st,-eps_bt0_st,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_st,eps_b2_st]
 
-        conc_ultimate_strain_bilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
-        conc_ultimate_strain_bilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
-        conc_ultimate_strain_bilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
-        conc_ultimate_strain_bilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-Rbt/Eb,0,eps_b1red_st,eps_b2_st]
+        # conc_ultimate_strain_bilin_curve_lt_to40 = [-1.2*eps_bt2_lt_to40,-1.1*eps_bt2_lt_to40,-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
+        # conc_ultimate_strain_bilin_curve_lt_40to75 = [-1.2*eps_bt2_lt_40to75,-1.1*eps_bt2_lt_40to75,-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
+        # conc_ultimate_strain_bilin_curve_lt_75up = [-1.2*eps_bt2_lt_75up,-1.1*eps_bt2_lt_75up,-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
+        # conc_ultimate_strain_bilin_curve_st = [-1.2*eps_bt2_st,-1.1*eps_bt2_st,-eps_bt2_st,-eps_bt1red_st,0,eps_b1red_st,eps_b2_st]
 
-        conc_service_stress_trilin_curve_lt_to40 = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
-        conc_service_stress_trilin_curve_lt_40to75 = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
-        conc_service_stress_trilin_curve_lt_75up = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
-        conc_service_stress_trilin_curve_st = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        # conc_service_stress_trilin_curve_lt_to40 = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        # conc_service_stress_trilin_curve_lt_40to75 = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        # conc_service_stress_trilin_curve_lt_75up = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        # conc_service_stress_trilin_curve_st = [0,0,-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
 
-        conc_service_stress_bilin_curve_lt_to40 = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
-        conc_service_stress_bilin_curve_lt_40to75 = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
-        conc_service_stress_bilin_curve_lt_75up = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
-        conc_service_stress_bilin_curve_st = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        # conc_service_stress_bilin_curve_lt_to40 = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        # conc_service_stress_bilin_curve_lt_40to75 = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        # conc_service_stress_bilin_curve_lt_75up = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
+        # conc_service_stress_bilin_curve_st = [0,0,-Rbtn,-Rbtn,0,Rbn,Rbn]
 
-        conc_ultimate_stress_trilin_curve_lt_to40 = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
-        conc_ultimate_stress_trilin_curve_lt_40to75 = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
-        conc_ultimate_stress_trilin_curve_lt_75up = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
-        conc_ultimate_stress_trilin_curve_st = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        # conc_ultimate_stress_trilin_curve_lt_to40 = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        # conc_ultimate_stress_trilin_curve_lt_40to75 = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        # conc_ultimate_stress_trilin_curve_lt_75up = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        # conc_ultimate_stress_trilin_curve_st = [0,0,-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
 
-        conc_ultimate_stress_bilin_curve_lt_to40 = [0,0,-Rbt,-Rbt,0,Rb,Rb]
-        conc_ultimate_stress_bilin_curve_lt_40to75 = [0,0,-Rbt,-Rbt,0,Rb,Rb]
-        conc_ultimate_stress_bilin_curve_lt_75up = [0,0,-Rbt,-Rbt,0,Rb,Rb]
-        conc_ultimate_stress_bilin_curve_st = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        # conc_ultimate_stress_bilin_curve_lt_to40 = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        # conc_ultimate_stress_bilin_curve_lt_40to75 = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        # conc_ultimate_stress_bilin_curve_lt_75up = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+        # conc_ultimate_stress_bilin_curve_st = [0,0,-Rbt,-Rbt,0,Rb,Rb]
+                
+        conc_service_strain_trilin_curve_lt_to40 = [-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
+        conc_service_strain_trilin_curve_lt_40to75 = [-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
+        conc_service_strain_trilin_curve_lt_75up = [-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
+        conc_service_strain_trilin_curve_st = [-eps_bt2_st,-eps_bt0_st,-0.6*Rbtn/Eb,0,0.6*Rbn/Eb,eps_b0_st,eps_b2_st]
+
+        conc_service_strain_bilin_curve_lt_to40 = [-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
+        conc_service_strain_bilin_curve_lt_40to75 = [-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
+        conc_service_strain_bilin_curve_lt_75up = [-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
+        conc_service_strain_bilin_curve_st = [-eps_bt2_st,-eps_bt1red_st,0,eps_b1red_st,eps_b2_st]
+
+        conc_ultimate_strain_trilin_curve_lt_to40 = [-eps_bt2_lt_to40,-eps_bt0_lt_to40,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_to40,eps_b2_lt_to40]
+        conc_ultimate_strain_trilin_curve_lt_40to75 = [-eps_bt2_lt_40to75,-eps_bt0_lt_40to75,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_40to75,eps_b2_lt_40to75]
+        conc_ultimate_strain_trilin_curve_lt_75up = [-eps_bt2_lt_75up,-eps_bt0_lt_75up,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_lt_75up,eps_b2_lt_75up]
+        conc_ultimate_strain_trilin_curve_st = [-eps_bt2_st,-eps_bt0_st,-0.6*Rbt/Eb,0,0.6*Rb/Eb,eps_b0_st,eps_b2_st]
+
+        conc_ultimate_strain_bilin_curve_lt_to40 = [-eps_bt2_lt_to40,-eps_bt1red_lt_to40,0,eps_b1red_lt_to40,eps_b2_lt_to40]
+        conc_ultimate_strain_bilin_curve_lt_40to75 = [-eps_bt2_lt_40to75,-eps_bt1red_lt_40to75,0,eps_b1red_lt_40to75,eps_b2_lt_40to75]
+        conc_ultimate_strain_bilin_curve_lt_75up = [-eps_bt2_lt_75up,-eps_bt1red_lt_75up,0,eps_b1red_lt_75up,eps_b2_lt_75up]
+        conc_ultimate_strain_bilin_curve_st = [-eps_bt2_st,-eps_bt1red_st,0,eps_b1red_st,eps_b2_st]
+
+        conc_service_stress_trilin_curve_lt_to40 = [-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        conc_service_stress_trilin_curve_lt_40to75 = [-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        conc_service_stress_trilin_curve_lt_75up = [-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+        conc_service_stress_trilin_curve_st = [-Rbtn,-Rbtn,-0.6*Rbtn,0,0.6*Rbn,Rbn,Rbn]
+
+        conc_service_stress_bilin_curve_lt_to40 = [-Rbtn,-Rbtn,0,Rbn,Rbn]
+        conc_service_stress_bilin_curve_lt_40to75 = [-Rbtn,-Rbtn,0,Rbn,Rbn]
+        conc_service_stress_bilin_curve_lt_75up = [-Rbtn,-Rbtn,0,Rbn,Rbn]
+        conc_service_stress_bilin_curve_st = [-Rbtn,-Rbtn,0,Rbn,Rbn]
+
+        conc_ultimate_stress_trilin_curve_lt_to40 = [-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        conc_ultimate_stress_trilin_curve_lt_40to75 = [-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        conc_ultimate_stress_trilin_curve_lt_75up = [-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+        conc_ultimate_stress_trilin_curve_st = [-Rbt,-Rbt,-0.6*Rbt,0,0.6*Rb,Rb,Rb]
+
+        conc_ultimate_stress_bilin_curve_lt_to40 = [-Rbt,-Rbt,0,Rb,Rb]
+        conc_ultimate_stress_bilin_curve_lt_40to75 = [-Rbt,-Rbt,0,Rb,Rb]
+        conc_ultimate_stress_bilin_curve_lt_75up = [-Rbt,-Rbt,0,Rb,Rb]
+        conc_ultimate_stress_bilin_curve_st = [-Rbt,-Rbt,0,Rb,Rb]
+
+        print(conc_service_strain_bilin_curve_st)
+        print(conc_service_stress_bilin_curve_st)
+        print(conc_ultimate_strain_bilin_curve_st)
+        print(conc_ultimate_stress_bilin_curve_st)
 
         if conc_diag_type == "Двухлинейная":
             if load_type == "Кратковременная":
@@ -156,18 +201,72 @@ def define_concrete_material(
         concrete_material = Concrete(
             name=conc_class,
             density=conc_density,
-            stress_strain_profile=ssp.StressStrainProfile(conc_service_strain,conc_service_stress),
-            ultimate_stress_strain_profile=ssp.StressStrainProfile(conc_ultimate_strain, conc_ultimate_stress),
+            stress_strain_profile=ssp.ConcreteServiceProfile(conc_service_strain,conc_service_stress,conc_service_strain[-1]),
+            ultimate_stress_strain_profile=ssp.ConcreteUltimateProfile(conc_ultimate_strain, conc_ultimate_stress,Rb),
             flexural_tensile_strength=Rbt,
             colour="lightgrey",
         )
 
-        ssp_service = concrete_material.stress_strain_profile
-        ssp_ultimate = concrete_material.ultimate_stress_strain_profile
+        ssp_service = concrete_material.stress_strain_profile.plot_stress_strain()
+        ssp_ultimate = concrete_material.ultimate_stress_strain_profile.plot_stress_strain()
 
         return concrete_material, ssp_service, ssp_ultimate
         
-    
+
+def defince_rebar_material(
+        rebar_class: str = 'A500',
+        rebar_density: float = 7.85e-6,
+        rebar_diag_type: str = 'Двухлинейная',
+        load_type: str = 'Кратковременная'
+) -> Tuple[SteelBar, SteelBar, matplotlib.axes.Axes, matplotlib.axes.Axes]:
+    """
+    """
+
+    rebar_mat_data = convert_to_numeric(ut.read_csv_file("concrete.csv"))
+    for line in rebar_mat_data:
+        if rebar_class == line[0]:
+            Rsn = line[1]
+            Rs = line[2]
+            Rsc_st = line[3]
+            Rsc_lt = line[4]
+            Es = line[5]
+            eps_s2_bl = line[6]
+            eps_s2_tl = line[7]
+
+    rebar_service_trilin_st = 
+    rebar_service_trilin_lt = 
+
+    rebar_service_bilin_st = [0,Rsn/Es,]
+    rebar_service_bilin_lt = 
+   
+    rebar_ultimate_trilin_st = 
+    rebar_ultimate_trilin_lt = 
+
+    rebar_ultimate_bilin_st = 
+    rebar_ultimate_bilin_lt = 
+
+    rebar_service_strain = 
+    rebar_service_stress = 
+
+    rebar_ultimate_strain = 
+    rebar_ultimate_stress = 
+
+    rebar_material_service = SteelBar(
+        name=rebar_class,
+        density=rebar_density,
+        stress_strain_profile=ssp.SteelProfile(rebar_service_strain,rebar_service_stress,rebar_service_stress[-1],Es,rebar_service_strain[-1]),
+        colour="grey"
+    )
+
+    rebar_material_ultimate = SteelBar(
+        name=rebar_class,
+        density=rebar_density,
+        stress_strain_profile=ssp.SteelProfile(rebar_ultimate_strain,rebar_ultimate_stress,rebar_ultimate_stress[-1],Es,rebar_ultimate_strain[-1]),
+        colour="grey"
+    )
+
+    if A600up
+
     
 
 def concrete_section_analysis(

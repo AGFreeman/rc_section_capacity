@@ -19,7 +19,7 @@ for dataline in rebar_mat_data[1:]:
 # Forces
 st.sidebar.subheader("Forces")
 N = st.sidebar.number_input("Axial force ($N$)", value = 800000, step = 10000)
-M = st.sidebar.number_input("Rebar strength ($Nmm$)", value = 10000000, step = 10000)
+M = st.sidebar.number_input("Moment ($Nmm$)", value = 10000000, step = 10000)
 load_type = st.sidebar.selectbox("Тип нагрузки", ["Кратковременная","Длительная"], 0)
 
 
@@ -28,7 +28,7 @@ st.sidebar.subheader("Материалы")
 st.sidebar.subheader("Бетон")
 conc_class = st.sidebar.selectbox("Класс бетона", conc_mat_names, 8)
 conc_diag_type = st.sidebar.selectbox("Тип диаграммы бетона", ['Двухлинейная','Трехлинейная'], 0)
-humidity = st.sidebar.selectbox("Влажность, %", ["<40","40-75",">70"], 1)
+humidity = st.sidebar.selectbox("Влажность, %", ["<40","40-75",">75"], 1)
 
 st.sidebar.subheader("Арматура")
 st.sidebar.selectbox("Класс арматуры", rebar_mat_names, 2)
@@ -40,7 +40,7 @@ concrete_mat, conc_service_ssp, conc_ultimate_ssp = rcscm.define_concrete_materi
 show_conc_diag = st.sidebar.toggle("Показать диаграммы бетона")
 
 if show_conc_diag:
-    st.pyplot(conc_service_ssp.figure)
+    st.pyplot(conc_ultimate_ssp.figure)
 
 
 
