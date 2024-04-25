@@ -15,8 +15,6 @@ from concreteproperties.results import MomentCurvatureResults, MomentInteraction
 from plotly import graph_objects as go
 from sectionproperties.pre.library import rectangular_section
 
-from eng_module import utils as ut
-
 from PIL import Image
 import io
 
